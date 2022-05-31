@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+    url: jdbc:h2:file:~/Documents/Coding/projektai/ignitis/chatAppBack/chatAppBack/src/main/resources/data
+#    ~/Documents/Coding/projektai/ignitis/chatAppBack/chatAppBack/src/main/resources/data
+   
+  h2:
+    console.enabled: 'true'
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
