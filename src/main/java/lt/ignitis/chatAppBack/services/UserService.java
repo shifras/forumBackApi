@@ -68,4 +68,8 @@ public class UserService {
 		}
 		return null;
 	}
+	
+	public void deleteUser(Integer userId) {
+		userRepository.deleteById(userId);
+	}
 }
