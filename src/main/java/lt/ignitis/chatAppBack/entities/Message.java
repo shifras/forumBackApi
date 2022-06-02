@@ -18,51 +18,41 @@ public class Message {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "date_created", nullable = true)
+	@Column(name = "date_created" ,columnDefinition = "VARCHAR(30) DEFAULT 'NULL'")
 	private String dateCreated;
 	
 	@Column(length = 280)
 	private String content;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_id")
-	private User author;
-
-	
+	@ManyToOne
+	@JoinColumn(name = "user_id", columnDefinition = "INT DEFAULT 'null'", referencedColumnName = "id")
+	private User user;
 
 	public Message() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
-
-	public Message(Integer id, String dateCreated, String content, User author) {
+	public Message(Integer id, String dateCreated, String content, User user) {
 		super();
 		this.id = id;
 		this.dateCreated = dateCreated;
 		this.content = content;
-		this.author = author;
+		this.user = user;
 	}
-
 
 
 	public Integer getId() {
 		return id;
 	}
 
-
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-
 	public String getDateCreated() {
 		return dateCreated;
 	}
-
 
 
 	public void setDateCreated(String dateCreated) {
@@ -70,11 +60,9 @@ public class Message {
 	}
 
 
-
 	public String getContent() {
 		return content;
 	}
-
 
 
 	public void setContent(String content) {
@@ -82,16 +70,26 @@ public class Message {
 	}
 
 
-
-	public User getAuthor() {
-		return author;
+	public User getUser() {
+		return user;
 	}
 
 
-
-	public void setAuthor(User author) {
-		this.author = author;
+	public void setUser(User user) {
+		this.user = user;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Message [id=" + id + ", dateCreated=" + dateCreated + ", content=" + content + ", user=" + user + "]";
+	}
+
+
+	
+
+	
+	
 
 	
 	

@@ -1,11 +1,19 @@
 package lt.ignitis.chatAppBack.entities;
 
 
+import java.sql.Timestamp;
+import java.util.List;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,39 +24,47 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column
+	@Column(unique = true , columnDefinition = "VARCHAR(30)")
 	private String username;
 	
-	@Column
-	private String password;
+	@Column(columnDefinition = "VARCHAR(50) default ''")
+	private String password = "";
 	
-	@Column
-	private String role;
+	@Column(columnDefinition = "VARCHAR(10) default 'user'")
+	private String role = "user";
 	
 	@Column(name = "message_qty", columnDefinition = "INT default '0'")
-	private Integer messageQty;
+	private Integer messageQty = 0;
 	
-	@Column(name = "first_message_timestamp", columnDefinition = "VARCHAR(30) default 'NULL'")
-	private String firstMessageTimestamp;
+//	@OneToOne(targetEntity = Message.class, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "first_message_id", columnDefinition = "Integer DEFAULT 'NULL'", referencedColumnName = "id")
+	@Column(name = "first_message_id")
+	private Integer firstMessageId;
 	
-	@Column(name = "last_message_timestamp", columnDefinition = "VARCHAR(30) default 'NULL'")
-	private String lastMessageTimestamp;
+//	@OneToOne(targetEntity = Message.class, fetch = FetchType.EAGER)
+//	@JoinColumn(name = "last_message_id", columnDefinition = "Integer DEFAULT 'NULL'", referencedColumnName = "id")
+	@Column(name = "last_message_id")
+	private Integer lastMessageId;
 	
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public User(Integer id, String username, String password, String role, Integer messageQty, String firstMessageTimestamp, String lastMessageTimestamp) {
+	
+
+	public User(Integer id, String username, String password, String role, Integer messageQty, Integer firstMessageId,
+			Integer lastMessageId) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.role = role;
 		this.messageQty = messageQty;
-		this.firstMessageTimestamp = firstMessageTimestamp;
-		this.lastMessageTimestamp = lastMessageTimestamp;
+		this.firstMessageId = firstMessageId;
+		this.lastMessageId = lastMessageId;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -57,7 +73,7 @@ public class User {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -65,7 +81,7 @@ public class User {
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -90,26 +106,34 @@ public class User {
 		this.messageQty = messageQty;
 	}
 
-	public String getFirstMessageTimestamp() {
-		return firstMessageTimestamp;
+
+
+	public Integer getFirstMessageId() {
+		return firstMessageId;
 	}
 
-	public void setFirstMessageTimestamp(String firstMessageTimestamp) {
-		this.firstMessageTimestamp = firstMessageTimestamp;
+
+
+	public void setFirstMessageId(Integer firstMessageId) {
+		this.firstMessageId = firstMessageId;
 	}
 
-	public String getLastMessageTimestamp() {
-		return lastMessageTimestamp;
+
+
+	public Integer getLastMessageId() {
+		return lastMessageId;
 	}
 
-	public void setLastMessageTimestamp(String lastMessageTimestamp) {
-		this.lastMessageTimestamp = lastMessageTimestamp;
+
+
+	public void setLastMessageId(Integer lastMessageId) {
+		this.lastMessageId = lastMessageId;
 	}
 
 	
+
 	
+
 	
-	
-	
-	
+
 }
