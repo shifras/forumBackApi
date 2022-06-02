@@ -48,7 +48,7 @@ public class User {
 	}
 
 	public User(Integer id, String username, String password, String role, Integer messageQty, Integer firstMessageId,
-			Integer lastMessageId, List<Message> messages) {
+			Integer lastMessageId) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -57,7 +57,6 @@ public class User {
 		this.messageQty = messageQty;
 		this.firstMessageId = firstMessageId;
 		this.lastMessageId = lastMessageId;
-//		this.messages = messages;
 	}
 
 	public Integer getId() {
