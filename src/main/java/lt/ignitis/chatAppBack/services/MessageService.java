@@ -27,6 +27,10 @@ public class MessageService {
 		return messages;
 	}
 	
+	public List<Message> getUserMessages(Integer userId){
+		return messageRepository.findByUserId(userId);
+	}
+	
 	public List<FormattedMessage> getFormattedMessages(){
 		List<Message> messages = messageRepository.findAll();
 		List<FormattedMessage> formattedMessages = new ArrayList<>();

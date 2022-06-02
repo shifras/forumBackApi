@@ -46,14 +46,15 @@ public class User {
 	@Column(name = "last_message_id")
 	private Integer lastMessageId;
 	
+//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//	private List<Message> messages;
+	
 	public User() {
 		super();
 	}
 
-	
-
 	public User(Integer id, String username, String password, String role, Integer messageQty, Integer firstMessageId,
-			Integer lastMessageId) {
+			Integer lastMessageId, List<Message> messages) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -62,9 +63,8 @@ public class User {
 		this.messageQty = messageQty;
 		this.firstMessageId = firstMessageId;
 		this.lastMessageId = lastMessageId;
+//		this.messages = messages;
 	}
-
-
 
 	public Integer getId() {
 		return id;
@@ -128,6 +128,14 @@ public class User {
 
 	public void setLastMessageId(Integer lastMessageId) {
 		this.lastMessageId = lastMessageId;
+	}
+
+	public Double calcMeanMessageLen(List<Message> userMessages) {
+		Double messageLenSum = 0.0;
+		for (Message message : userMessages) {
+			messageLenSum += message.getContent().length();
+		}
+		return messageLenSum/this.messageQty*1.0;
 	}
 
 	

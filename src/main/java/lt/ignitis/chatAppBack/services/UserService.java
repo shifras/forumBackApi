@@ -37,12 +37,15 @@ public class UserService {
 		Message firstMessage = messageService.getMessageById(user.getFirstMessageId());
 		Message lastMessage = messageService.getMessageById(user.getLastMessageId());
 		
+		List<Message> userMessages = messageService.getUserMessages(userId);
+		
 		formattedUser.setUserId(user.getId());
 		formattedUser.setUsername(user.getUsername());
 		formattedUser.setMessageQty(user.getMessageQty());
 		formattedUser.setFirstMessageTime(firstMessage.getDateCreated());
-		formattedUser.setLastMessageTime(firstMessage.getDateCreated());
+		formattedUser.setLastMessageTime(lastMessage.getDateCreated());
 		formattedUser.setLastMessageContent(lastMessage.getContent());
+		formattedUser.setMeanMessageLen(user.calcMeanMessageLen(userMessages));
 		return formattedUser;
 	}
 	

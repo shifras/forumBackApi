@@ -6,11 +6,11 @@ public class FormattedUser {
 	private Integer messageQty;
 	private String firstMessageTime;
 	private String lastMessageTime;
-	private Integer meanMessageLen;
+	private Double meanMessageLen;
 	private String lastMessageContent;
 	
 	public FormattedUser(String username, Integer messageQty, String firstMessageTime, String lastMessageTime,
-			Integer meanMessageLen, String lastMessageContent, Integer userId) {
+			Double meanMessageLen, String lastMessageContent, Integer userId) {
 		super();
 		this.username = username;
 		this.messageQty = messageQty;
@@ -57,11 +57,11 @@ public class FormattedUser {
 		this.lastMessageTime = lastMessageTime;
 	}
 
-	public Integer getMeanMessageLen() {
+	public Double getMeanMessageLen() {
 		return meanMessageLen;
 	}
 
-	public void setMeanMessageLen(Integer meanMessageLen) {
+	public void setMeanMessageLen(Double meanMessageLen) {
 		this.meanMessageLen = meanMessageLen;
 	}
 

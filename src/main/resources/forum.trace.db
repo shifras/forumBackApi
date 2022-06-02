@@ -1,4 +1,4 @@
-2022-06-02 11:12:21 jdbc[3]: exception
+2022-06-02 13:08:54 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement:
 
     create table forum.messages (
@@ -67,7 +67,7 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-2022-06-02 11:12:21 jdbc[3]: exception
+2022-06-02 13:08:54 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement:
 
     create table forum.users (
@@ -139,7 +139,7 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-2022-06-02 11:12:21 jdbc[3]: exception
+2022-06-02 13:08:54 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement:
 
     alter table forum.users 
@@ -203,7 +203,7 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-2022-06-02 11:12:21 jdbc[3]: exception
+2022-06-02 13:08:54 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement:
 
     alter table forum.users 
@@ -267,7 +267,7 @@ org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
-2022-06-02 11:12:21 jdbc[3]: exception
+2022-06-02 13:08:54 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Schema "FORUM" not found; SQL statement:
 
     alter table forum.messages 
