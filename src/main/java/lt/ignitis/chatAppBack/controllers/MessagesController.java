@@ -38,7 +38,7 @@ public class MessagesController {
 	}
 	
 	@CrossOrigin
-	@GetMapping("/")
+	@GetMapping("/messages/allInfo")
 	public List<Message> getMessages() {
 		return messageService.getMessages();
 	}

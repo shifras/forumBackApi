@@ -57,4 +57,9 @@ public class MessageService {
 			userService.updateUser(m.getUser());
 		return messageRepository.save(m);
 	}
+	
+	public Message getMessageById(Integer messageId) {
+		//returns a message if exists, otherwise throws NoSuchElementException
+		return messageRepository.findById(messageId).get();
+	}
 }
