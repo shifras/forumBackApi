@@ -23,7 +23,7 @@ public class UserService {
 		//looks like if you dont add .get() at the end, you get serialisable/proxy exception, 
 		//and does not return back User Object.
 		//It still does the job anyway.
-		return userRepository.findById(id).get();
+		return userRepository.findById(id).orElse(null);
 	}
 	
 	public List<User> getAllUsers(){

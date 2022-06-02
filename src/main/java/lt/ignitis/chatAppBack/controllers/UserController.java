@@ -51,15 +51,19 @@ public class UserController {
 	@CrossOrigin
 	@GetMapping("/users/{userId}")
 	public FormattedUser getUser(@PathVariable Integer userId) {
-		return userService.getFormattedUser(userId);
+		User u = userService.getUserById(userId);
+		if (u == null) {
+			return userService.getFormattedUser(userId);
+		} else {
+			throw new UserException("Tokio vartotojo nera", 404);
+		}
 	}
 	
 	@CrossOrigin
 	@DeleteMapping("/users/delete/{userId}")
 	public Boolean deleteUser(@PathVariable Integer userId) {
 		User u=userService.getUserById(userId);
-		Integer a=u.getMessageQty();
-		if (a == 0) {
+		if (u.getMessageQty() == 0) {
 			userService.deleteUser(userId);
 			return true;
 		} else {

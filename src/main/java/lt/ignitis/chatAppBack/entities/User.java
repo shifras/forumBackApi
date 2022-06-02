@@ -2,7 +2,6 @@ package lt.ignitis.chatAppBack.entities;
 
 
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,25 +29,18 @@ public class User {
 	@Column(name = "message_qty", columnDefinition = "INT default '0'")
 	private Integer messageQty = 0;
 	
-//	@OneToOne(targetEntity = Message.class, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "first_message_id", columnDefinition = "Integer DEFAULT 'NULL'", referencedColumnName = "id")
 	@Column(name = "first_message_id")
 	private Integer firstMessageId;
-	
-//	@OneToOne(targetEntity = Message.class, fetch = FetchType.EAGER)
-//	@JoinColumn(name = "last_message_id", columnDefinition = "Integer DEFAULT 'NULL'", referencedColumnName = "id")
+
 	@Column(name = "last_message_id")
 	private Integer lastMessageId;
-	
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-//	private List<Message> messages;
 	
 	public User() {
 		super();
 	}
 
-	public User(Integer id, String username, String password, String role, Integer messageQty, Integer firstMessageId,
-			Integer lastMessageId) {
+	public User(Integer id, String username, String password, String role, Integer messageQty, Integer firstMessageId, Integer lastMessageId) 
+	{
 		super();
 		this.id = id;
 		this.username = username;
