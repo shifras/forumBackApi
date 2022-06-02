@@ -30,6 +30,10 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
+	public List<User> findByUsername(String username){
+		return userRepository.findByUsername(username);
+	}
+	
 	public FormattedUser getFormattedUser(Integer userId) {
 		FormattedUser formattedUser = new FormattedUser();
 		User user = this.getUserById(userId);
@@ -50,13 +54,18 @@ public class UserService {
 	}
 	
 	public User updateUser(User user) {
-//		User old = this.findById(user.getId());
-//		if (old.getFirstMessage() == null) {
-//			old.setFirstMessage(user.getFirstMessage());
-//		}
-//		
-//		old.setLastMessage(user.getLastMessage());
-//		old.setMessageQty(user.getMessageQty());
 		return userRepository.save(user);
+	}
+	
+	
+	
+	public User addUser(User user){
+		//when springsecurity will be implemented, this will work
+//		user.setPassword( (new BCryptPasswordEncoder()).encode(user.getPassword()));
+		List<User> userWithSameUsername = userRepository.findByUsername(user.getUsername());
+		if (userWithSameUsername.isEmpty()) {
+			return userRepository.save(user);
+		}
+		return null;
 	}
 }

@@ -11,7 +11,6 @@ import lt.ignitis.chatAppBack.entities.FormattedMessage;
 import lt.ignitis.chatAppBack.entities.Message;
 import lt.ignitis.chatAppBack.entities.User;
 import lt.ignitis.chatAppBack.repositories.MessageRepository;
-import lt.ignitis.chatAppBack.repositories.UserRepository;
 
 @Service
 public class MessageService {
