@@ -11,7 +11,7 @@ import lt.ignitis.chatAppBack.entities.User;
 import lt.ignitis.chatAppBack.repositories.UserRepository;
 
 @Service
-public class UserService {
+public class UserService /*implements UserDetailsService*/ {
 
 	@Autowired
 	UserRepository userRepository;
@@ -30,7 +30,7 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
-	public List<User> findByUsername(String username){
+	public User findByUsername(String username){
 		return userRepository.findByUsername(username);
 	}
 	
@@ -60,10 +60,9 @@ public class UserService {
 	
 	
 	public User addUser(User user){
-		//when springsecurity will be implemented, this will work
 //		user.setPassword( (new BCryptPasswordEncoder()).encode(user.getPassword()));
-		List<User> userWithSameUsername = userRepository.findByUsername(user.getUsername());
-		if (userWithSameUsername.isEmpty()) {
+		User userWithSameUsername = userRepository.findByUsername(user.getUsername());
+		if (userWithSameUsername == null) {
 			return userRepository.save(user);
 		}
 		return null;
@@ -72,4 +71,13 @@ public class UserService {
 	public void deleteUser(Integer userId) {
 		userRepository.deleteById(userId);
 	}
+
+//	@Override
+//	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+//		User user=this.findByUsername(username);
+//		if (user == null) {
+//			throw new UsernameNotFoundException("Toks vartotojas neegzistuoja.");
+//		}
+//		return user;
+//	}
 }

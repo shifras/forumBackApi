@@ -9,10 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "users", schema = "forum")
-public class User {
-	
+public class User /*implements UserDetails*/ {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -20,7 +21,7 @@ public class User {
 	@Column(nullable = false,unique = true , columnDefinition = "VARCHAR(30)")
 	private String username;
 	
-	@Column(columnDefinition = "VARCHAR(50) default ''")
+	@Column(columnDefinition = "VARCHAR(150) default ''")
 	private String password = "";
 	
 	@Column(columnDefinition = "VARCHAR(10) default 'user'")
@@ -38,7 +39,7 @@ public class User {
 	public User() {
 		super();
 	}
-
+	
 	public User(Integer id, String username, String password, String role, Integer messageQty, Integer firstMessageId, Integer lastMessageId) 
 	{
 		super();
@@ -122,6 +123,37 @@ public class User {
 		}
 		return messageLenSum/this.messageQty*1.0;
 	}
+
+//	@Override
+//	public Collection<? extends GrantedAuthority> getAuthorities() {
+//		HashSet<GrantedAuthority> auth=new HashSet<>();
+//		auth.add( new SimpleGrantedAuthority(this.getRole()));
+//		return auth;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonExpired() {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isAccountNonLocked() {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isCredentialsNonExpired() {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean isEnabled() {
+//		// TODO Auto-generated method stub
+//		return true;
+//	}
 
 	
 

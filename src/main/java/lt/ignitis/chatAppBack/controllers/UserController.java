@@ -39,11 +39,11 @@ public class UserController {
 	@CrossOrigin
 	@PostMapping("/users/add")
 	public User addUser(@RequestBody User user) {
-		List<User> messages = userService.findByUsername(user.getUsername());
-		if(messages.isEmpty()) {
+		User userWithSameUsername = userService.findByUsername(user.getUsername());
+		if(userWithSameUsername == null) {
 			return userService.addUser(user);
 		} else {
-		throw new UserException("Vartotojas tokiu vardu jau egzistuoja", 406);
+			throw new UserException("Vartotojas tokiu vardu jau egzistuoja", 406);
 		}
 			
 	}
@@ -53,10 +53,9 @@ public class UserController {
 	public FormattedUser getUser(@PathVariable Integer userId) {
 		User u = userService.getUserById(userId);
 		if (u == null) {
-			return userService.getFormattedUser(userId);
-		} else {
 			throw new UserException("Tokio vartotojo nera", 404);
-		}
+		} 
+		return userService.getFormattedUser(userId);
 	}
 	
 	@CrossOrigin
